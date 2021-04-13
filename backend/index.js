@@ -6,11 +6,11 @@ const port = 4000;
 //const redisPort = 6379;
 //const client = redis.createClient(redisPort);
 
-//var mongoose = require('mongoose');
+var mongoose = require('mongoose');
 
-//var mongoDB = 'mongodb://127.0.0.1/saheli';
+var mongoDB = 'mongodb://127.0.0.1/saheli';
 
-//mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
 app.use(express.json())
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
