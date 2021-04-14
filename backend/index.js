@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express();
 const port = 4000;
+const authRoutes = require("./src/routes/auth")
 //const redis = require("redis");
 
 //const redisPort = 6379;
@@ -21,6 +22,7 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Methods","*")
     next();
   });
+app.use(authRoutes)
 
 app.get('/', (req, res) => {
   res.json({"saheli" : "saheli"})

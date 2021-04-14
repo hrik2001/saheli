@@ -30,7 +30,8 @@ const UserSchema = new mongoose.Schema({
     username: {
         type: String,
         trim: true,
-        required: true
+        required: true,
+        unique: true
     },
     password: {
         type: String,
@@ -73,6 +74,19 @@ const UserSchema = new mongoose.Schema({
     prefer: {
         type: Number,
         default: 500
-    }
+    },
+    token: String,
+    resetToken: String,
+    resetTokenExpiration: Date
 
 } , {timestamps: true})
+
+UserSchema.pre('save', async function(next){
+    const user = this
+    if(user.isModified('password')){
+        user.password = await bcrypt.hash(user.password, 12) //default is 10 but have seen people using 8 too
+    }
+    next()
+})
+
+module.exports = mongoose.model( "user" , UserSchema)
