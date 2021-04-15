@@ -56,8 +56,9 @@ const UserSchema = new mongoose.Schema({
         default: false
     },
     guid: {
-        type: String,
-        default: ""
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "group",
+        default: null 
     },
     destination: {
         type: String,

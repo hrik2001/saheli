@@ -1,6 +1,7 @@
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 const user = require("../models/user")
+const notification = require("../models/notification")
 require("dotenv").config();
 
 exports.signup = async(req , res , next) =>{
@@ -12,7 +13,7 @@ exports.signup = async(req , res , next) =>{
     const username = req.body.username;
     const aadhaar = req.body.aadhaar;
     if(password != confirmPassword){
-        throw Error("bruh")
+        throw Error("password and confirmPassword not equal")
     }
     //TODO sendgrid, they declined my email lmaooo
     //const token = jwt.sign({email: email} , process.env.jwt_secret_key, {algorithm: "HS256", expiresIn: process.env.access_token_life})
@@ -60,6 +61,41 @@ exports.login = async(req , res , next) =>{
     }
 }
 
-exports.location = async(req, res, next) =>{
-    res.status(200).send({"sex":"chad"})
+exports.notification_post = async(req , res, next) =>{
+    try{
+        const current_user = await user.findOne({username : req.user.username})
+        const partner = await user.findOne({username : req.body.partner})
+        const notif = new notification({issuer : current_user._id , issuee : partner._id})
+        await notif.save()
+        res.status(200).send({"Type":"Success"})
+    }catch(err){
+        res.status(401).send({"Type":"Error" , "Message":err})
+    }
+}
+
+exports.notification_get = async(req , res , next) =>{
+    try{
+        const User = await user.findOne({username : req.user.username})
+        const result = await notification.find({issuee : User._id})
+        res.status(200).send(result)
+    }catch(err){
+        res.status(401).send({"Type":"Error" , "Message" : err})
+    }
+}
+
+exports.group = async(req , res, next) =>{
+    try{
+        const current_user = await user.findOne({username : req.user.username})
+        const partner = await user.findOne({username : req.body.partner})
+        if(partner.guid == null){
+            if(current_user.guid != null){
+                partner.guid = current_user.guid
+                await partner.save()
+            }else{
+                partner.guid = 0
+            }
+        }
+    }catch(err){
+        res.status(401).send({"Type" : "Error" , "Message" : err})
+    }
 }

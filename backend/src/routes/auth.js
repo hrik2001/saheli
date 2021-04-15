@@ -13,5 +13,7 @@ router.post('/vehicle' , auth, geoController.vehicle)
 router.post('/destination' , auth, geoController.destination)
 router.post('/range' , auth, geoController.range)
 router.post('/outside' , auth, geoController.outside)
+router.post('/notification' , auth, authController.notification_post)
+router.get('/notification' , auth, authController.notification_get)
 
 module.exports = router
