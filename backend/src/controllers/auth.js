@@ -5,8 +5,8 @@ require("dotenv").config();
 
 exports.signup = async(req , res , next) =>{
     const email = req.body.email;
-    const password = req.body.email;
-    const confirmPassword = req.body.email;
+    const password = req.body.password;
+    const confirmPassword = req.body.confirmPassword;
     const lastName = req.body.lastName;
     const firstName = req.body.firstName;
     const username = req.body.username;
@@ -49,7 +49,7 @@ exports.login = async(req , res , next) =>{
     console.log(right)
     //right not working
     //right = true
-    if(true){
+    if(right){
         User.save().then((a)=>{
             res.status(200).send({"Type": "Success", "token" : token})
         }).catch((error)=>{

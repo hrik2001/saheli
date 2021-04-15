@@ -85,8 +85,8 @@ const UserSchema = new mongoose.Schema({
 UserSchema.pre('save', async function(next){
     const user = this
     if(user.isModified('password')){
-        user.password = await bcrypt.hash(user.password, 8) //default is 10 but have seen people using 8 too
         console.log(user.password)
+        user.password = await bcrypt.hash(user.password, 8) //default is 10 but have seen people using 8 too
     }
     next()
 })
