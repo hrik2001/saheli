@@ -15,5 +15,7 @@ router.post('/range' , auth, geoController.range)
 router.post('/outside' , auth, geoController.outside)
 router.post('/notification' , auth, authController.notification_post)
 router.get('/notification' , auth, authController.notification_get)
+router.post('/group' , auth, authController.group)
+router.get('/leavegroup' , auth, authController.leavegroup)
 
 module.exports = router

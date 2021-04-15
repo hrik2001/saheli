@@ -1,6 +1,7 @@
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 const user = require("../models/user")
+const group = require("../models/group")
 const notification = require("../models/notification")
 require("dotenv").config();
 
@@ -92,9 +93,27 @@ exports.group = async(req , res, next) =>{
                 partner.guid = current_user.guid
                 await partner.save()
             }else{
-                partner.guid = 0
+                const newgroup = new group()
+                partner.guid = newgroup._id
+                current_user.guid = newgroup._id
+                await partner.save()
+                await current_user.save()
             }
+            res.status(200).send({"Type" : "Success"})
+        }else{
+            res.status(401).send({"Type" : "Error" , "Message" : "Current user already part of group"})
         }
+    }catch(err){
+        res.status(401).send({"Type" : "Error" , "Message" : err})
+    }
+}
+
+exports.leavegroup = async(req , res , next) =>{
+    try{
+        const current_user = await user.findOne({username : req.user.username})
+        current_user.guid = null;
+        await current_user.save()
+        res.status(200).send({"Type" : "Success"})
     }catch(err){
         res.status(401).send({"Type" : "Error" , "Message" : err})
     }

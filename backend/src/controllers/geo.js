@@ -73,6 +73,7 @@ exports.range = async(req , res, next) =>{
 exports.outside = async(req , res, next) =>{
     const User = await user.findOne({"username" : req.user.username})
     User.outside = req.body.outside
+    User.guid = null
     if(!req.body.outside){
         client.zrem("saheli" , req.user.username)
     }
