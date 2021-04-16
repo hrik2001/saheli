@@ -1,0 +1,218 @@
+.navbar-collapse{
+    justify-content: space-around !important;
+}
+
+
+.navbar{
+    background-color: white;
+    box-shadow: 0px 3px 11px #BAD8FD40 !important;
+    margin-bottom:0px!important;
+    z-index:100;
+    
+}
+
+
+.navbar-brand{
+    color:rgba(0, 0, 0, 0.541)!important;
+    font-weight: bolder;
+}
+
+
+.Navbar nav{
+    height:100%;
+}
+
+
+.home,.board{
+    background:rgba(255, 255, 255, 0.247);
+    border-radius:px;
+    height: 37px;
+    padding-bottom:6px;
+}
+
+.fa-home{
+    font-size: 19px;
+    color:rgba(0, 0, 0, 0.541);
+}
+
+.fa-dashcube{
+    color:rgb(255, 255, 255);
+    font-size:17px;
+    border-radius:3px;
+}
+
+.board{
+    margin-left:10px;
+}
+.board-icon-text{
+    font-size:15px !important;
+    color:rgba(0, 0, 0, 0.541);
+    padding-left:6px;
+    font-weight:bolder;
+    
+}
+
+.Logo-specs{
+    margin-left:150px;
+}
+
+
+.Signupbtn,.Loginbtn,.logoutlink{
+    margin-right:10px;
+    color:rgba(0, 0, 0, 0.541);
+    font-weight:bolder;
+
+}
+
+.logout{
+    margin-left:10px;
+}
+
+.active-categoryMenu{
+    color:rgba(0, 0, 0, 0.541) !important;
+    font-weight:bolder !important;
+    
+}
+
+.Loginbtn:hover,
+.Signupbtn:hover{
+    opacity:0.7;
+    color:inherit !important;
+}
+
+
+.Loginbtn:active,
+.Signupbtn:active{
+    
+    background:rgba(0, 0, 0, 0.541);
+
+}
+
+
+
+
+.profileName{
+    font: normal normal 200 17px/23px Gilroy;
+    color:rgba(13, 22, 46, 0.76) !important;
+ 
+}
+
+.btnactive{
+    color:#3C4852;
+    border-bottom:black solid 0.5px;
+
+}
+
+.dropdown-toggle{
+    color: #ffffff !important;
+}
+
+
+.fa-bars {
+    color:rgba(0, 0, 0, 0.541);
+}
+.dropdown-item{
+   
+    font: normal normal  17px/20px Gilroy;
+    letter-spacing: 0.47px;
+    color: #ffffff;
+    opacity:0.7;
+   
+}
+
+.dropdown-item:active{
+    background:rgb(66, 110, 96) !important;
+}
+
+
+.dropdown-item:hover{
+  font-weight:bolder!important;
+   
+}
+.dropdown:hover .dropdown-menu{
+    display:block;
+    margin-top:0;
+
+}
+
+
+
+.wishlistlink,.profilelink{
+    color: #566775;
+}
+
+.linkactive{
+    font-weight:bolder!important;
+}
+
+.navlink:hover{
+    color:#566775!important;
+}
+
+
+.wishlistlink:hover,
+.profilelink:hover{
+
+    font-weight:bolder!important;
+}
+
+
+
+.bar-nav{
+    color:rgba(0, 0, 0, 0.541)!important;
+}
+
+.bar-nav-sub{
+    color:rgb(34, 32, 32)!important;
+}
+
+.usere{
+    margin-right:20px;
+}
+
+.avatar{
+    background:rgba(0, 0, 0, 0.541);
+    color:#89609E;
+}
+
+
+.toggler-button{
+    transform: translateY(3px);
+    margin-left:3px;
+}
+
+@media (max-width:998px){
+
+
+    .home,.board,.avatar{
+        background:rgba(255, 255, 255, 0.247);
+       
+    }
+
+    
+    .logout{
+        margin-left:0px;
+        padding:2px;
+    }
+
+
+    .board{
+        margin-left:0px;
+        padding:2px;
+    }
+
+    .avatar{
+        margin-top:5px;
+        margin-bottom:5px;
+        padding:2px;
+    }
+    
+}
+    
+    
+
+.myClassName .myControlClassName .myMenuClassName{
+    background:red;
+    color:blue;
+    margin-left:10px;
+}
