@@ -17,5 +17,8 @@ router.post('/notification' , auth, authController.notification_post)
 router.get('/notification' , auth, authController.notification_get)
 router.post('/group' , auth, authController.group)
 router.get('/leavegroup' , auth, authController.leavegroup)
+router.get('/emergency' , auth, geoController.emergency_get)
+router.get('/victims' , auth, geoController.emergency_post)
+router.get('/leaveemergency' , auth, geoController.leave_emergency)
 
 module.exports = router
