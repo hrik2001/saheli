@@ -1,0 +1,44 @@
+.notification_parent{
+    position: relative;
+    display:inline-block;
+}
+
+.notification{
+    position:absolute;
+    display: none;
+    white-space: nowrap;
+    overflow: hidden;
+    top:40px;
+    left:-55px;
+    border-radius:4px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    z-index:10 !important;
+    color:white;
+    font-weight:bolder;
+    background-color: #ff0f0f;
+
+}
+.notification_parent:hover .notification
+{
+    display:inline-block;
+
+}
+.notification_icon{
+    margin-right:20px;
+}
+
+
+.notification_block{
+
+}
+.notification_block p{
+    padding-left:1rem;
+    padding-right:1rem;
+    padding-top:0.5rem;
+    padding-bottom:0.5rem;
+}
+
+.notification_block p:hover{
+    background-color: rgba(196, 189, 189, 0.616);
+    cursor: pointer;
+}

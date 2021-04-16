@@ -21,7 +21,9 @@
 .Navbar nav{
     height:100%;
 }
-
+.notiva{
+    position:relative;
+}
 
 .home,.board{
     background:rgba(255, 255, 255, 0.247);

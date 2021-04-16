@@ -3,6 +3,8 @@ import './Navbar.css';
 import {NavLink,Redirect,Link} from 'react-router-dom';
 import { Avatar } from '@material-ui/core';
 import SwitchButton from '../Button/switch';
+import NotificationsNoneRoundedIcon from '@material-ui/icons/NotificationsNoneRounded';
+import './notification.css';
 
 class Navbar extends Component {
     
@@ -10,6 +12,8 @@ class Navbar extends Component {
         isLoggedIn:false,
         userName:localStorage.getItem('userName'),
         redirect:null,
+        travellingModel:false,
+        
     }
 
 
@@ -18,9 +22,9 @@ class Navbar extends Component {
        url=url.split("/")[3];
        console.log(url);
        if(url === "login")
-       {}
-
+        {}
        else this.setState({redirect:"/login"})
+       
        localStorage.clear();
     }
 
@@ -30,77 +34,76 @@ class Navbar extends Component {
 
 
      render(){
+   
+      
 
       let LoginLinks,firstLetter;
 
-      if(this.state.userName){
-         
-         firstLetter = this.state.userName;
-      }
-    
+      if(this.state.userName)
+          firstLetter = this.state.userName;
+      
       else firstLetter = 'A';
 
-       if (this.state.redirect) {
-            return <Redirect to={this.state.redirect} />
-        }
-      
+       if (this.state.redirect) 
+          return <Redirect to={this.state.redirect} />
+        
+      let notification =
+      ( <div className="notification">
+        <div className="notification_block">
+            <p>Request from srishti</p>
+            <p>notification 2</p>
+        </div>
+      </div> )
 
        LoginLinks = ( 
        
        <ul className="navbar-nav ml-auto">
   
         <li className="nav-item">
-        
-      
-       <Link to={`/user/${localStorage.getItem('userId')}/`} style={{ textDecoration: 'none' }}><Avatar className="avatar">{firstLetter[0].toUpperCase()}</Avatar></Link>
-        
-        
+            <Link to={`/user/${localStorage.getItem('userId')}/`} style={{ textDecoration: 'none' }}><Avatar className="avatar">{firstLetter[0].toUpperCase()}</Avatar></Link>
         </li>
 
-        <li className="nav-item">
-                
+        <li className="nav-item"> 
             <NavLink to="/login" onClick={this.logout} activeClassName="btnactive"
              className="nav-link home Signupbtn logout">Logout</NavLink>
-                
         </li>
     </ul>
 
     ); 
 
-  
-
-
       if(localStorage.getItem('access') === null){
 
         LoginLinks =( <ul className="navbar-nav ml-auto">
 
-               
 
-                <li className="nav-item">
-                
-                <NavLink to="/signup" activeClassName="btnactive" className="nav-link home Signupbtn">Signup</NavLink>
-                
-                </li>
-            
-                <li className="nav-item">
-                <NavLink to="/login" activeClassName="btnactive" className="nav-link  home Loginbtn">Login</NavLink>
-                
-                </li>
+            <li className="nav-item ">
+              <span className="notification_parent">
+                  <span className="nav-link home"> 
+                    <NotificationsNoneRoundedIcon className={"notification_icon"}/>
+                  </span>
+                    {notification} 
+              </span>
+                    
+            </li>
 
-                
-               
-      </ul>
+              <li className="nav-item">
+                  <NavLink to="/signup" activeClassName="btnactive" className="nav-link home Signupbtn">Signup</NavLink>
+              </li>
+
+              
+              <li className="nav-item">
+                  <NavLink to="/login" activeClassName="btnactive" className="nav-link  home Loginbtn">Login</NavLink>    
+              </li>
+    
+           </ul>
         )}
 
-
-        
     return(
   
-
   <nav className=" navbar navbar-expand-lg sticky-top ">
 
     <NavLink to="/home" className="navbar-brand">Saheli</NavLink>
-
+  
     <button className="navbar-toggler" type="button" data-toggle="collapse" 
     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
     aria-expanded="false"
@@ -115,16 +118,15 @@ class Navbar extends Component {
     <li className="nav-item ">
           <span className="nav-link home"> 
           Going out today?</span>
-         
     </li>
           
-    <li className="nav-item">
-          <SwitchButton/>
+    <li  className="nav-item">
+          <SwitchButton   />
+         
     </li>
     
     </ul>
-  
-
+   
     {LoginLinks}
     
   </div>

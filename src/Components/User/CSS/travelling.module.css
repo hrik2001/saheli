@@ -1,0 +1,40 @@
+.travel{
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    padding:1.2rem;
+    border-radius: 7px;
+    display:flex;
+    justify-content: space-between;
+    width:50%;
+}
+
+.travel_left{
+    margin-right:40px;
+}
+.travel_left p, .travel_right p{
+
+}
+.travel_left h1, .travel_right h1{
+    font-size:22px;
+    font-weight:bolder;
+}
+
+.travel_left h4, .travel_right h4{
+    font-size:13px;
+}
+.travel_right{
+
+}
+
+.travel_icon{
+    align-self: center;
+}
+.travel_status p{
+    display: inline-block;  
+    font-size:20px;
+    font-weight: bold;
+    border-bottom:solid 1px;
+    margin-right:5px;
+}
+.travel_status span{
+    font-size:20px;
+}

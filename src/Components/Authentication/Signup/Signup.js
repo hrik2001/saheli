@@ -9,8 +9,6 @@ import Navbar from '../../Navigation/Navbar';
 import LoadingButton from '../../Button/Loading';
 import Alerts from '../../Alert/Alert';
 
-
-
 class Signup extends Component {
 
     state = { 
@@ -377,6 +375,7 @@ inputBlurHandler = (event,inputIdentifier)=> {
 
                             {form}
                 </div>
+                
         </>
         );
     }

@@ -1,0 +1,19 @@
+.heading{
+    text-align: center;
+    margin-top:30px;
+   
+}
+
+.form{
+    width:100vw;
+    height:40vh;
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+    
+}
+
+
+.sumbitButton{
+   text-align: center;
+}

@@ -4,7 +4,8 @@ import Avatar from '@material-ui/core/Avatar';
 import Navbar from '../Navigation/Navbar';
 import AuthService from '../../ApiServices/services'
 import Alerts from '../Alert/Alert';
-
+import Button from '@material-ui/core/Button';
+import Travelling from './travelling';
 
 function Profile(props){
 
@@ -14,7 +15,11 @@ function Profile(props){
     const [name,setUserName]=React.useState(null);
     const [userbioo,setUserBio]=React.useState(null);
     const [Alert,setAlert]=React.useState(null);
-    
+    const [profile_picture,setProfile]=React.useState('sa');
+    const [friend,setFriend]=React.useState(null);
+    const [image_file,imageHandler]=React.useState(null);
+    const [image_name,imageNameHandler]=React.useState(null);
+    const [me,meHandler]=React.useState(null);
 
     React.useEffect( ()=>{
         AuthService.Profile(userId)
@@ -44,7 +49,7 @@ function Profile(props){
       const inputHandlerName=(event)=>{
         setUserName(event.target.value);
         console.log(name)
-  }
+     }
 
       const sumbitHandler=()=>{
 
@@ -88,7 +93,14 @@ function Profile(props){
        }
       }
 
-
+      const fileSelectorHandler = event =>{
+    
+        const image_file = event.target.files[0];
+        const image_name=URL.createObjectURL(event.target.files[0]);
+       
+        imageHandler(image_file);
+        imageNameHandler(image_name);
+    }
       let userName,bio,id=null;
 
       if(user!==null){
@@ -105,46 +117,78 @@ function Profile(props){
     if(Alert!==null)
         alert = (<Alerts type={Alert.type} text={Alert.text} />);
 
+    const Profile_picture=(
+        profile_picture == null ?  <Avatar className={styles.avatar}/> : 
+        <div className={styles.profile_picture}>
+            <img src="/images/jennifer.jpg" alt="profile picture" />
+        </div>
+    );
+
     return (
         <div className={styles.ProfileFont}>
         <Navbar/>
         {alert}
         <div className={styles.profileSection}>
             <div className={styles.profile}>
-                    <Avatar className={styles.avatar}/>
-                <h5 className={styles.userName}>{userName}</h5>
-                <h6 className={styles.userId}>@{id}</h6>
+                <div className={styles.flex_col_center}>
+                    {Profile_picture}
+
+                    <div className={styles.upload_image}>
+            
+                        <label className={styles.custom_image_upload}>
+                            <input type="file" name='file'  onChange={fileSelectorHandler}/>
+                                UPLOAD IMAGE
+                        </label>
+
+                        {/* <p className="ImageName">{image_name}</p>
+                        <img className="" 
+                            src={"this.state.Form.image.name"} alt="No file Selected"/> */}
+                    </div>
+
+                </div>    
+
+              <div className={styles.profile_personal}>
+                <h5 className={styles.userName}>{"Jennifer Lawrence"}</h5>
+                <h5 className={styles.user_location}>{"Lives in Sector 53"}</h5>
+                <h5 className={styles.user_age}>{"21"}</h5>
+              </div>
+              {friend === null ? <Button variant="contained" color="secondary">Request saheli</Button>
+                : <Button variant="contained" color="primary">Connected</Button>}
+ 
             </div>  
         </div>
 
         <div className={styles.AboutSection}>
-      
+            <div className={styles.bio}>
 
+            {me===null ? 
+                <Travelling/>
+                
+                : 
+                <div>  
+                    <div className={styles.user}>
+                        <h4 className={styles.AboutText} >About user</h4>
+                        <hr className={styles.About}/>
+                        <h5>Username</h5>
+                        <input className={styles.input} type="text"
+                        defaultValue={userName}
+                        placeholder="Enter your name"
+                        onChange={(event)=>inputHandlerName(event)}/>
+                    </div>
 
-        <div className={styles.bio}>
+                
+                    <div className={styles.bioDesc}>
+                        <h5>location</h5>
+                        <input className={styles.input} type="text"
+                            defaultValue={bio}
+                            placeholder="edit your location"
+                            onChange={(event)=>inputHandlerBio(event)}/>
+                    </div>
 
+                    <button onClick={sumbitHandler} >Save</button>
+                </div>  
+            }
             
-            <div className={styles.user}>
-                <h4 className={styles.AboutText} >About user</h4>
-                <hr className={styles.About}/>
-                <h5>Username</h5>
-                <input className={styles.input} type="text"
-                 defaultValue={userName}
-                 placeholder="Enter your name"
-                 onChange={(event)=>inputHandlerName(event)}/>
-            </div>
-
-             
-            <div className={styles.bioDesc}>
-                <h5>bio</h5>
-                <input className={styles.input} type="text"
-                    defaultValue={bio}
-                    placeholder="Enter your bio"
-                    onChange={(event)=>inputHandlerBio(event)}/>
-            </div>
-
-            <button onClick={sumbitHandler} >Save</button>
-
         </div>
         </div>
         </div>
