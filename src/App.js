@@ -10,6 +10,7 @@ import OtpVerify from './Components/Authentication/ForgotPassword/OtpVerify';
 import Dashboard from './Components/dashboard/dashboard';
 import Profile from './Components/User/Profile';
 import TravellingForm from './Components/travellingForm/travelling';
+import Group from './Components/group/group';
 function App() {
   return (
 
@@ -26,6 +27,7 @@ function App() {
      <Route path="/dashboard" exact component={Dashboard}/>
      <Route path="/profile" exact component={Profile}/>
      <Route path="/travelForm" component={TravellingForm}/>
+     <Route path="/group" component={Group}/>
     
      <Redirect to="/signup"/> 
 

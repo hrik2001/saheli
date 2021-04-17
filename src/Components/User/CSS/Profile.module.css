@@ -37,7 +37,7 @@
     height:100px;
     background: #9263ff;
 }
-.userName,.user_age,.user_location{
+.userName,.user_age,.user_location,.group_members{
     margin-left:20px;
     margin-right:20px;
 }
@@ -52,6 +52,22 @@
 }
 .user_location{
     font-size:17px;
+}
+.group{
+    display: flex;
+    flex-direction: column;
+    border-radius:7px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height:150px;
+}
+
+.group_members{
+    font-size:17px;  
+    cursor: pointer;
+}
+.group_members:hover{
+    opacity: 0.6;
 }
 
 .userId{

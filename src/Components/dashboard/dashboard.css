@@ -5,23 +5,53 @@
     justify-content: center;
     align-items: center;
     z-index:0;
-    
     margin-top:1.1rem;
 }
+.dashboard_map{
+    display:flex;
+    width:100%;
+    justify-content: flex-end; 
+}
+
 
 .map{
     width:80%;
     height:50vh;
     margin-bottom:1.1rem;
     justify-self: center;
+    margin-right:70px !important;
 }
 
 .filter{
     display:flex;
     flex-direction: column;
     align-items: center;
+    margin-right:70px !important;
 }
 
 .find_button{
     margin: auto 0;
+    margin-top:30px !important;
+}
+
+.key{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.key_text p:nth-child(1){
+    text-decoration: underline;
+    text-align: center;
+    font-weight: 900;
+}
+
+
+.label{
+    display:flex;
+    padding:0px 30px 0px 30px;
+}
+
+.label p{
+    margin-left:15px;
 }

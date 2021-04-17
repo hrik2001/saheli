@@ -6,13 +6,16 @@ import SwitchButton from '../Button/switch';
 import NotificationsNoneRoundedIcon from '@material-ui/icons/NotificationsNoneRounded';
 import './notification.css';
 
+import EmergencyModal from '../model/emergency';
+
+
 class Navbar extends Component {
     
     state = {
         isLoggedIn:false,
         userName:localStorage.getItem('userName'),
         redirect:null,
-        travellingModel:false,
+        
         
     }
 
@@ -35,7 +38,6 @@ class Navbar extends Component {
 
      render(){
    
-      
 
       let LoginLinks,firstLetter;
 
@@ -50,7 +52,7 @@ class Navbar extends Component {
       let notification =
       ( <div className="notification">
         <div className="notification_block">
-            <p>Request from srishti</p>
+            <p>Srishti sent you notificaiton</p>
             <p>notification 2</p>
         </div>
       </div> )
@@ -75,6 +77,11 @@ class Navbar extends Component {
 
         LoginLinks =( <ul className="navbar-nav ml-auto">
 
+          <li className="nav-item">
+              <EmergencyModal/>
+          </li>
+
+         
 
             <li className="nav-item ">
               <span className="notification_parent">
@@ -124,7 +131,7 @@ class Navbar extends Component {
           <SwitchButton   />
          
     </li>
-    
+   
     </ul>
    
     {LoginLinks}

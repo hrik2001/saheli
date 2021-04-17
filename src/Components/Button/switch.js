@@ -27,7 +27,7 @@ class SwitchButton extends Component {
         onChange={this.handleChange} 
         className="toggler-button" 
         checked={this.state.checked}
-        offColor={"#ff0f0f"} />
+        offColor={"#F50057"} />
     
     );
   }
